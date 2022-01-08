@@ -22,6 +22,8 @@ To launch jupyter:
 jupyter notebook
 ```
 
+## Notebooks
+
 Install bash_kernel for Jupyter:
 https://github.com/NephTek/Public_Notebooks/blob/main/m1mac_bash_kernel_install.ipynb
 
