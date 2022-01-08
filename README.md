@@ -1,4 +1,4 @@
-This repository provides Jupyter notebooks made public by Nephtek for Kubernetes opeations on a variety of platforms.
+This repository provides Jupyter notebooks made public by Nephtek for Kubernetes operations on a variety of platforms.
 
 A lot of these notebooks rely upond Docker Desktop being installed. To install Docker Desktop:
 
