@@ -6,4 +6,5 @@ https://docs.docker.com/get-docker/
 
 Select your operating system and follow the installation instructions on the above page to install Docker Desktop.
 
-> :warning: **If you are using mobile browser**: Be very careful here!
+> :warning: **IUsing Docker on your M1 Mac means you may be subject to Docker licenseing fees.
+https://docs.docker.com/subscription/**
