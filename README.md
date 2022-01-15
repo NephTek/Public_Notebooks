@@ -1,15 +1,10 @@
 This repository provides Jupyter notebooks made public by Nephtek for Kubernetes operations on a variety of platforms.
 
-## Docker Installation
+## Rancher Desktop Installation
 
-A lot of these notebooks rely upon Docker Desktop being installed. To install Docker Desktop:
+https://docs.rancherdesktop.io/installation
 
-https://docs.docker.com/get-docker/
-
-Select your operating system and follow the installation instructions on the above page to install Docker Desktop.
-
-> :warning: **Using Docker on your M1 Mac means you may be subject to Docker licenseing fees.
-https://docs.docker.com/subscription/**
+Select your operating system and follow the installation instructions on the above page to install Rancher Desktop.
 
 ## Jupyter Installation
 
