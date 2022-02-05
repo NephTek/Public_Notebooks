@@ -6,6 +6,8 @@ https://docs.rancherdesktop.io/installation
 
 Select your operating system and follow the installation instructions on the above page to install Rancher Desktop.
 
+Ensure you max out your CPU and Memory under "Kubernetes Settings" within Rancher to something closer to the Red Line.
+
 ## Jupyter Installation
 
 For Mac:
