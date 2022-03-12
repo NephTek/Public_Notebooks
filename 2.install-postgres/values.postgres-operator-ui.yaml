@@ -1,6 +1,11 @@
 ingress:
   enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
   hosts:
-  - host: postgres-ui.k8s.example.com
+  - host: postgres-ui.k8s.nephtek.com
     paths: [""]
-  tls: []
+  tls:
+    - hosts:
+        - postgres-ui.k8s.nephtek.com
+      secretName: postgres-ui-k8s-nephtek-com-tls
