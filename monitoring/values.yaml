@@ -1,0 +1,15 @@
+alertmanager:
+  ingress:
+    enabled: true
+
+grafana:
+  ingress:
+    enabled: true
+  additionalDataSources:
+    - name: Loki
+      url: http://loki.logging:3100
+      type: loki
+
+prometheus:
+  ingress:
+    enabled: true

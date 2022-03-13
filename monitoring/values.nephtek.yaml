@@ -1,0 +1,32 @@
+alertmanager:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: nephtek-com-issuer
+    hosts:
+      - alertmanager.k8s.nephtek.com
+    tls:
+      - secretName: alertmanager-k8s-nephtek-com-tls
+        hosts:
+          - alertmanager.k8s.nephtek.com
+
+grafana:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: nephtek-com-issuer
+    hosts:
+      - grafana.k8s.nephtek.com
+    tls:
+      - secretName: grafana-k8s-nephtek-com-tls
+        hosts:
+          - grafana.k8s.nephtek.com
+
+prometheus:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: nephtek-com-issuer
+    hosts:
+      - prometheus.k8s.nephtek.com
+    tls:
+      - secretName: prometheus-k8s-nephtek-com-tls
+        hosts:
+          - prometheus.k8s.nephtek.com

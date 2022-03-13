@@ -1,0 +1,7 @@
+serviceMonitor:
+  enabled: true
+  additionalLabels:
+    release: kps
+
+config:
+  lokiAddress: http://loki.logging:3100

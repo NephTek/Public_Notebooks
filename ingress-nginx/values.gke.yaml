@@ -1,0 +1,15 @@
+controller:
+  hostPort:
+    enabled: false
+    ports:
+      http: 80
+      https: 443
+  ingressClassResource:
+    name: nginx-internal
+    default: true
+  service:
+    annotations:
+      networking.gke.io/load-balancer-type: "Internal"
+    externalTrafficPolicy: "Local"
+    type: LoadBalancer
+
