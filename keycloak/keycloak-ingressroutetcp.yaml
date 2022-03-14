@@ -1,0 +1,22 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: keycloak
+  namespace: keycloak
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+  - match: HostSNI(`keycloak.k8s.example.com`)
+    services:
+    - name: keycloak
+      namespace: keycloak
+      port: 8443
+  - match: HostSNI(`keycloak.k8s.nephtek.com`)
+    services:
+    - name: keycloak
+      namespace: keycloak
+      port: 8443
+  tls:
+    passthrough: true
