@@ -1,0 +1,118 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakRealm
+metadata:
+  labels:
+    app: keycloak
+  name: ldap-realm
+  namespace: keycloak
+spec:
+  instanceSelector:
+    matchLabels:
+      app: keycloak
+  realm:
+    displayName: LDAPRealm
+    enabled: true
+    id: ldap-realm
+    realm: ldap-realm
+    userFederationProviders:
+      - displayName: "ldap"
+        providerName: "ldap"
+        config:
+          vendor: "other"
+          connectionUrl: "ldap://openldap-openldap-stack-ha.openldap.svc"
+          bindDn: "cn=admin,dc=nephtek,dc=com"
+          # This reads the REALM-SECRET from /opt/jboss/keycloak/secrets
+          # In this example, the secret key is called ldap-realm_bindCredential
+          # See deploy/examples/keycloak/keycloak-with-vault.yaml for an
+          # example of how to setup the vault secret directory
+          #bindCredential: "${vault.bindCredential}"
+          bindCredential: "admin"
+          usersDn: DC=nephtek,DC=com
+          usernameLDAPAttribute: "uid"
+          uuidLDAPAttribute: "entryUUID"
+          searchScope: "2" # sub
+          useTruststoreSpi: "ldapsOnly"
+          trustEmail: "true"
+          userObjectClasses: "inetOrgPerson, organizationalPerson"
+          rdnLDAPAttribute: "cn"
+          editMode: "READ_ONLY"
+          # debug: "false"
+    userFederationMappers:
+      - name: username
+        federationProviderDisplayName: ldap
+        federationMapperType: user-attribute-ldap-mapper
+        config:
+          always.read.value.from.ldap: 'false'
+          is.binary.attribute: 'false'
+          is.mandatory.in.ldap: 'true'
+          ldap.attribute: uid
+          read.only: 'true'
+          user.model.attribute: username
+      - name: modify date
+        federationProviderDisplayName: ldap
+        federationMapperType: user-attribute-ldap-mapper
+        config:
+          always.read.value.from.ldap: 'true'
+          is.binary.attribute: 'false'
+          is.mandatory.in.ldap: 'false'
+          ldap.attribute: modifyTimestamp
+          read.only: 'true'
+          user.model.attribute: modifyTimestamp
+      - name: creation date
+        federrationProviderDisplayName: ldap
+        federationMapperType: user-attribute-ldap-mapper
+        config:
+          always.rad.value.from.ldap: 'true'
+          is.binary.attribute: 'false'
+          is.mandatory.in.ldap: 'false'
+          ldap.attribute: createTimestamp
+          read.only: 'true'
+          user.model.attribute: createTimestamp
+      #- name: MSAD account controls
+      #  federationProviderDisplayName: ldap
+      #  federationMapperType:  msad-user-account-control-mapper
+      #  config:
+      #    ldap.password.policy.hints.enabled: 'false'
+      - name: last name
+        federationProviderDisplayName: ldap
+        federationMapperType: user-attribute-ldap-mapper
+        config:
+          always.read.value.from.ldap: 'true'
+          is.binary.attribute: 'false'
+          is.mandatory.in.ldap: 'true'
+          ldap.attribute: sn
+          read.only: 'true'
+          user.model.attribute: lastName
+      - name: email
+        federationProviderDisplayName: ldap
+        federationMapperType: user-attribute-ldap-mapper
+        config:
+          always.read.value.from.ldap: 'false'
+          is.binary.attribute: 'false'
+          is.mandatory.in.ldap: 'true'
+          ldap.attribute: mail
+          read.only: 'true'
+          user.model.attribute: email
+      - name: full name
+        federationProviderDisplayName: ldap
+        federationMapperType: full-name-ldap-mapper
+        config:
+          ldap.full.name.attribute: cn
+          read.only: 'true'
+          write.only: 'false'
+      - name: groups
+        federationProviderDisplayName: ldap
+        federationMapperType: group-ldap-mapper
+        config:
+          membership.attribute.type: DN
+          group.name.ldap.attribute: cn
+          membership.user.ldap.attribute: sAMAccountName
+          preserve.group.inheritance: 'true'
+          groups.dn: DC=nephtek,DC=com
+          mode: READ_ONLY
+          user.roles.retrieve.strategy: GET_GROUPS_FROM_USER_MEMBEROF_ATTRIBUTE
+          groups.ldap.filter: "(cn=EXAMPLE*)" #Only pull in groups that start with prefix EXAMPLE
+          membership.ldap.attribute: 'true'
+          memberof.ldap.attribute: memberOf
+          group.object.classes: group
+          drop.non.existing.groups.during.sync: 'true'

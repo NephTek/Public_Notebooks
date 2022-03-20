@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
     #nginx.ingress.kubernetes.io/ssl-redirect: "true"
     #nginx.ingress.kubernetes.io/ssl-passthrough: "true"
@@ -29,3 +30,7 @@ spec:
               number: 8443
         path: /
         pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - keycloak.k8s.nephtek.com
+    secretName: keycloak-k8s-cert

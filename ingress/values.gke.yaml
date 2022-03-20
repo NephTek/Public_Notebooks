@@ -1,15 +1,18 @@
 controller:
+  metrics:
+    serviceMonitor:
+      enabled: false
+    prometheusRule:
+      enabled: false    
   hostPort:
     enabled: false
     ports:
       http: 80
       https: 443
   ingressClassResource:
-    name: nginx-internal
+    name: nginx-external
     default: true
   service:
-    annotations:
-      networking.gke.io/load-balancer-type: "Internal"
     externalTrafficPolicy: "Local"
     type: LoadBalancer
 
