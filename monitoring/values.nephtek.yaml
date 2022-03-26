@@ -19,6 +19,20 @@ grafana:
       - secretName: grafana-k8s-nephtek-com-tls
         hosts:
           - grafana.k8s.nephtek.com
+  env:
+    GF_SERVER_DOMAIN: grafana.k8s.nephtek.com
+    GF_SERVER_ROOT_URL: https://grafana.k8s.nephtek.com
+    GF_USERS_VIEWERS_CAN_EDIT: "true"
+    GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+    GF_AUTH_GENERIC_OAUTH_NAME: Nephtek AD
+    GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+    GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana.k8s.nephtek.com
+    GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: 4OlE0ot58e51uZ3xV7xrnM2qvM2AR8AS
+    GF_AUTH_GENERIC_OAUTH_SCOPES: profile
+    GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/auth
+    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/token
+    GF_AUTH_GENERIC_OAUTH_API_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/userinfo
+    GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: roles[?contains(@, 'Grafana_Admin')]  && 'Admin' || roles[?contains(@, 'Grafana_Editor')] && 'Editor' || 'Viewer'
 
 prometheus:
   ingress:

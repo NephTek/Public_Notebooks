@@ -104,7 +104,7 @@ spec:
         federationProviderDisplayName: ldap
         federationMapperType: group-ldap-mapper
         config:
-          membership.attribute.type: DN
+          membership.attribute.type: UID
           group.name.ldap.attribute: cn
           membership.user.ldap.attribute: sAMAccountName
           preserve.group.inheritance: 'true'
