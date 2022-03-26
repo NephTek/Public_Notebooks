@@ -73,6 +73,16 @@ spec:
       #  federationMapperType:  msad-user-account-control-mapper
       #  config:
       #    ldap.password.policy.hints.enabled: 'false'
+      - name: first name
+        federationProviderDisplayName: ldap
+        federationMapperType: user-attribute-ldap-mapper
+        config:
+          always.read.value.from.ldap: 'true'
+          is.binary.attribute: 'false'
+          is.mandatory.in.ldap: 'true'
+          ldap.attribute: givenName
+          read.only: 'true'
+          user.model.attribute: firstName
       - name: last name
         federationProviderDisplayName: ldap
         federationMapperType: user-attribute-ldap-mapper
