@@ -4,4 +4,4 @@ serviceMonitor:
     release: kps
 
 config:
-  lokiAddress: http://loki.logging:3100
+  lokiAddress: http://loki.logging.svc:3100/loki/api/v1/push
