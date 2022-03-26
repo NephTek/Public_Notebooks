@@ -59,7 +59,7 @@ spec:
           read.only: 'true'
           user.model.attribute: modifyTimestamp
       - name: creation date
-        federrationProviderDisplayName: ldap
+        federationProviderDisplayName: ldap
         federationMapperType: user-attribute-ldap-mapper
         config:
           always.rad.value.from.ldap: 'true'
@@ -93,26 +93,26 @@ spec:
           ldap.attribute: mail
           read.only: 'true'
           user.model.attribute: email
-      - name: full name
-        federationProviderDisplayName: ldap
-        federationMapperType: full-name-ldap-mapper
-        config:
-          ldap.full.name.attribute: cn
-          read.only: 'true'
-          write.only: 'false'
+      #- name: full name
+      #  federationProviderDisplayName: ldap
+      #  federationMapperType: full-name-ldap-mapper
+      #  config:
+      #    ldap.full.name.attribute: cn
+      #    read.only: 'true'
+      #    write.only: 'false'
       - name: groups
         federationProviderDisplayName: ldap
         federationMapperType: group-ldap-mapper
         config:
           membership.attribute.type: UID
           group.name.ldap.attribute: cn
-          membership.user.ldap.attribute: sAMAccountName
-          preserve.group.inheritance: 'true'
-          groups.dn: DC=nephtek,DC=com
+          membership.user.ldap.attribute: uid
+          preserve.group.inheritance: 'false'
+          groups.dn: OU=groups,DC=nephtek,DC=com
           mode: READ_ONLY
-          user.roles.retrieve.strategy: GET_GROUPS_FROM_USER_MEMBEROF_ATTRIBUTE
-          groups.ldap.filter: "(cn=EXAMPLE*)" #Only pull in groups that start with prefix EXAMPLE
-          membership.ldap.attribute: 'true'
+          user.roles.retrieve.strategy: LOAD_GROUPS_BY_MEMBER_ATTRIBUTE
+          groups.ldap.filter: ""
+          membership.ldap.attribute: 'memberUid'
           memberof.ldap.attribute: memberOf
-          group.object.classes: group
-          drop.non.existing.groups.during.sync: 'true'
+          group.object.classes: posixGroup
+          drop.non.existing.groups.during.sync: 'false'
