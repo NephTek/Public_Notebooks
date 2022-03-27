@@ -29,7 +29,6 @@ cn: aaronh
 gidnumber: 501
 objectclass: posixGroup
 objectclass: top
-Email: aaron@nephtek.com
 
 # Entry 4: cn=accounting,ou=groups,dc=nephtek,dc=com
 dn: cn=accounting,ou=groups,dc=nephtek,dc=com
@@ -54,7 +53,6 @@ cn: dank
 gidnumber: 500
 objectclass: posixGroup
 objectclass: top
-Email: dan@nephtek.com
 
 # Entry 7: cn=developer,ou=groups,dc=nephtek,dc=com
 dn: cn=developer,ou=groups,dc=nephtek,dc=com
@@ -69,7 +67,6 @@ cn: laurab
 gidnumber: 505
 objectclass: posixGroup
 objectclass: top
-Email: laura@nephtek.com
 
 # Entry 9: ou=people,dc=nephtek,dc=com
 dn: ou=people,dc=nephtek,dc=com
@@ -84,6 +81,7 @@ gidnumber: 501
 givenname: Aaron
 homedirectory: /home/users/aaronh
 loginshell: /bin/bash
+mail: aaron@nephtek.com
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
@@ -100,6 +98,7 @@ gidnumber: 500
 givenname: Dan
 homedirectory: /home/users/dank
 loginshell: /bin/bash
+mail: dan@nephtek.com
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
@@ -116,6 +115,7 @@ gidnumber: 505
 givenname: Laura
 homedirectory: /home/users/laurab
 loginshell: /bin/bash
+mail: laura@nephtek.com
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top

@@ -1,0 +1,31 @@
+oidc:
+  clientId: kube-oidc-proxy
+  issuerUrl: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm
+  usernameClaim: sub
+  #groupsClaim: groups
+  #groupsPrefix: "oidcgroup:"
+
+extraArgs:
+  v: 10
+
+ingress:
+  enabled: false
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+  hosts:
+    - host: kube-api.k8s.nephtek.com
+      paths:
+        - /
+  tls:
+    - secretName: kube-api-k8s-cert
+      hosts:
+        - kube-api.k8s.nephtek.com
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
