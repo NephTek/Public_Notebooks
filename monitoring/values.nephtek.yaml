@@ -32,8 +32,7 @@ grafana:
     GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/auth
     GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/token
     GF_AUTH_GENERIC_OAUTH_API_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/userinfo
-    GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(resource_access.grafana.k8s.nephtek.com.roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'"
-    #GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: roles[?contains(@, 'admin')]  && 'Admin' || roles[?contains(@, 'editor')] && 'Editor' || 'Viewer'
+    GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: roles[?contains(@, 'admin')]  && 'Admin' || roles[?contains(@, 'editor')] && 'Editor' || 'Viewer'
 
 prometheus:
   ingress:
