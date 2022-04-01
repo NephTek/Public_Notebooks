@@ -1,9 +1,9 @@
 oidc:
   clientId: kube-oidc-proxy
   issuerUrl: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm
-  usernameClaim: sub
-  #groupsClaim: groups
-  #groupsPrefix: "oidcgroup:"
+  usernameClaim: email
+  groupsClaim: groups
+  groupsPrefix: "oidcgroup:"
 
 extraArgs:
   v: 10

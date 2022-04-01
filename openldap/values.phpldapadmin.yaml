@@ -1,0 +1,21 @@
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
+  hosts:
+    - phpldapadmin.k8s.nephtek.com
+  tls:
+    - secretName: phpldapadmin-k8s-nephtek-com-cert
+      hosts:
+        - phpldapadmin.k8s.nephtek.com
+
+reousrces:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 128Mi

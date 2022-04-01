@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+  name: kube-oidc-proxy
+  namespace: kube-oidc-proxy
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: kube-api.k8s.nephtek.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: kube-oidc-proxy
+                port:
+                  name: https
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - kube-api.k8s.nephtek.com
+      secretName: kube-api-k8s-nephtek-com-tls

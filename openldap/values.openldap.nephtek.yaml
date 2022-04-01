@@ -1,0 +1,30 @@
+env:
+  LDAP_LOG_LEVEL: "256"
+  LDAP_ORGANISATION: "Nephtek Demo"
+  LDAP_DOMAIN: "nephtek.com"
+  LDAP_READONLY_USER: "true"
+  LDAP_READONLY_USER_USERNAME: "readonly"
+  LDAP_READONLY_USER_PASSWORD: "password"
+  LDAP_RFC2307BIS_SCHEMA: "false"
+  LDAP_BACKEND: "hdb"
+  LDAP_TLS: "true"
+  LDAP_TLS_CRT_FILENAME: "tls.crt"
+  LDAP_TLS_KEY_FILENAME: "tls.key"
+  LDAP_TLS_DH_PARAM_FILENAME: "dhparam.pem"
+  LDAP_TLS_CA_CRT_FILENAME: "ca.crt"
+  LDAP_TLS_ENFORCE: "false"
+  CONTAINER_LOG_LEVEL: "4"
+  LDAP_TLS_REQCERT: "never"
+  #KEEP_EXISTING_CONFIG: "false"
+  LDAP_REMOVE_CONFIG_AFTER_SETUP: "true"
+  LDAP_SSL_HELPER_PREFIX: "ldap"
+  LDAP_TLS_VERIFY_CLIENT: "never"
+  LDAP_TLS_PROTOCOL_MIN: "3.0"
+  LDAP_TLS_CIPHER_SUITE: "NORMAL"
+
+perssistence:
+  enabeld: true
+  size: 1Gi
+
+test:
+  enabled: true

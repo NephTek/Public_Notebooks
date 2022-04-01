@@ -34,7 +34,7 @@ objectclass: top
 dn: cn=accounting,ou=groups,dc=nephtek,dc=com
 cn: accounting
 gidnumber: 504
-memberuid: 502
+memberuid: laurab
 objectclass: posixGroup
 objectclass: top
 
@@ -42,8 +42,7 @@ objectclass: top
 dn: cn=administrator,ou=groups,dc=nephtek,dc=com
 cn: administrator
 gidnumber: 503
-memberuid: 500
-memberuid: 501
+memberuid: aaronh
 objectclass: posixGroup
 objectclass: top
 
@@ -58,6 +57,7 @@ objectclass: top
 dn: cn=developer,ou=groups,dc=nephtek,dc=com
 cn: developer
 gidnumber: 502
+memberuid: dank
 objectclass: posixGroup
 objectclass: top
 
@@ -87,7 +87,7 @@ objectclass: posixAccount
 objectclass: top
 sn: Hanson
 uid: aaronh
-uidnumber: 1001
+uidnumber: 501
 userpassword: {CRYPT}$6$mhMVFqkg$BqPB.EtibTDuhQMWO7AtwCGO0B8EDgMkHDvxtOLJ7mn
  UwR.2F/VYPo3PutBdB1lcVH3CBwcZd.rFS2eiojqZf.
 
@@ -104,7 +104,7 @@ objectclass: posixAccount
 objectclass: top
 sn: Kirkpatrick
 uid: dank
-uidnumber: 1000
+uidnumber: 500
 userpassword: {CRYPT}$6$N1nI8Ny3$MTlL3nITnn45OtiZbkG8/GOn5zdG2U/wgWb/J4o69ou
  6uPT1wPXlXV6m80xQokkR4THCFf.bOTPdeMX7PMnFp/
 
@@ -121,6 +121,15 @@ objectclass: posixAccount
 objectclass: top
 sn: Banfield
 uid: laurab
-uidnumber: 1002
+uidnumber: 502
 userpassword: {CRYPT}$6$2mz.qiBz$B1XlMnOknTp39eVzWaHjrFlhMaBwXfrCe8KJnkrhxUe
  UsftHUDiSFqDoBK7if8btyWlzdm3T2B14iViIT9prI/
+
+# Entry 13: cn=argocdadmins,ou=groups,dc=nephtek,dc=com
+dn: cn=developer,ou=groups,dc=nephtek,dc=com
+cn: argocdadmins
+gidnumber: 506
+memberuid: dank
+objectclass: posixGroup
+objectclass: top
+

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: phpldapadmin
+  labels:
+    app: phpldapadmin
+data:
+  PHPLDAPADMIN_HTTPS: "false"
+  PHPLDAPADMIN_TRUST_PROXY_SSL: "true"
+  PHPLDAPADMIN_LDAP_HOSTS: openldap
+  PYTHON2BASH:
+    "[{'openldap.openldap':
+       [{'server': [
+         {'tls': False},
+         {'port':636}
+       ]},
+         {'login':
+           [{'bind_id': 'cn=admin,dc=nephtek,dc=com'}]
+         }]
+     }]"
