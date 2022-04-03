@@ -22,7 +22,7 @@ config:
   configFile: |-
     provider = "oidc"
     provider_display_name = "Keycloak"
-    oidc_issuer_url = "https://keycloak.nephtek.com/auth/realms/ldap-realm"
+    oidc_issuer_url = "https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm"
     email_domains = [ "*" ]
     scope = "openid profile email"
     cookie_domains = [ ".nephtek.com" ]
@@ -43,14 +43,14 @@ ingress:
   pathType: ImplementationSpecific
   # Used to create an Ingress record.
   hosts:
-    - oauth2.nephtek.com
+    - oauth2.k8s.nephtek.com
   annotations:
     cert-manager.io/cluster-issuer: nephtek-com-issuer
     nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
   tls:
-    - secretName: oauth2-nephtek-com-cert
+    - secretName: oauth2-k8s-nephtek-com-cert
       hosts:
-        - oauth2.nephtek.com
+        - oauth2.k8s.nephtek.com
 
 resources:
   limits:
