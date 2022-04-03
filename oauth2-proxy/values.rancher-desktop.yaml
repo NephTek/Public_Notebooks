@@ -1,0 +1,61 @@
+config:
+  # OAuth client ID
+  clientID: "oauth2-proxy"
+  # OAuth client secret
+  clientSecret: "0dix1MvddXx77MuvCM5KHeQXsyoTQcY3"
+  # Create a new secret with the following command
+  # openssl rand -base64 32 | head -c 32 | base64
+  # Use an existing secret for OAuth2 credentials (see secret.yaml for required fields)
+  # Example:
+  # existingSecret: secret
+  cookieSecret: "YkppRkY5SFJaOGhieFFPYk1uQ0lwaldEdVBGZ0FUZmk="
+  # The name of the cookie that oauth2-proxy will create
+  # If left empty, it will default to the release name
+  cookieName: ""
+  google: { }
+    # adminEmail: xxxx
+    # serviceAccountJson: xxxx
+  # Alternatively, use an existing secret (see google-secret.yaml for required fields)
+  # Example:
+  # existingSecret: google-secret
+  # Default configuration, to be overridden
+  configFile: |-
+    provider = "oidc"
+    provider_display_name = "Keycloak"
+    oidc_issuer_url = "https://keycloak.nephtek.com/auth/realms/ldap-realm"
+    email_domains = [ "*" ]
+    scope = "openid profile email"
+    cookie_domains = [ ".nephtek.com" ]
+    whitelist_domains = [ ".nephtek.com" ]
+    pass_authorization_header = true
+    pass_access_token = true
+    pass_user_headers = true
+    set_authorization_header = true
+    set_xauthrequest = true
+    cookie_refresh = "1m"
+    cookie_expire = "30m"
+
+ingress:
+  enabled: true
+  path: /
+  ingressClassName: nginx
+  # Only used if API capabilities (networking.k8s.io/v1) allow it
+  pathType: ImplementationSpecific
+  # Used to create an Ingress record.
+  hosts:
+    - oauth2.nephtek.com
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+  tls:
+    - secretName: oauth2-nephtek-com-cert
+      hosts:
+        - oauth2.nephtek.com
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 100Mi
+  requests:
+    cpu: 100m
+    memory: 25Mi
