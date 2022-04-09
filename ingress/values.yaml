@@ -1,4 +1,6 @@
 controller:
+  ingressClassResource:
+    default: true
   resources:
     limits:
       cpu: 200m

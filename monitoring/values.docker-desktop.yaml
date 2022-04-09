@@ -1,0 +1,68 @@
+alertmanager:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: nephtek-com-issuer
+      nginx.ingress.kubernetes.io/auth-response-headers: x-auth-request-user, x-auth-request-email, x-auth-request-access-token
+      nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+    hosts:
+      - alertmanager.k8s.nephtek.com
+    tls:
+      - secretName: alertmanager-k8s-nephtek-com-tls
+        hosts:
+          - alertmanager.k8s.nephtek.com
+
+grafana:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: nephtek-com-issuer
+    hosts:
+      - grafana.k8s.nephtek.com
+    tls:
+      - secretName: grafana-k8s-nephtek-com-tls
+        hosts:
+          - grafana.k8s.nephtek.com
+  env:
+    GF_SERVER_DOMAIN: grafana.k8s.nephtek.com
+    GF_SERVER_ROOT_URL: https://grafana.k8s.nephtek.com
+    GF_USERS_VIEWERS_CAN_EDIT: "true"
+    GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
+    GF_AUTH_GENERIC_OAUTH_NAME: Nephtek AD
+    GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP: "true"
+    GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana.k8s.nephtek.com
+    GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: VxG2Tfpbfurn7c5VQ44rnJx9DitOcie9
+    GF_AUTH_GENERIC_OAUTH_SCOPES: profile
+    GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/auth
+    GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/token
+    GF_AUTH_GENERIC_OAUTH_API_URL: https://keycloak.k8s.nephtek.com/auth/realms/ldap-realm/protocol/openid-connect/userinfo
+    GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: roles[?contains(@, 'admin')]  && 'Admin' || roles[?contains(@, 'editor')] && 'Editor' || 'Viewer'
+
+prometheus:
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: nephtek-com-issuer
+      nginx.ingress.kubernetes.io/auth-response-headers: x-auth-request-user, x-auth-request-email, x-auth-request-access-token
+      nginx.ingress.kubernetes.io/auth-signin: https://$host/oauth2/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-url: https://$host/oauth2/auth
+    hosts:
+      - prometheus.k8s.nephtek.com
+    tls:
+      - secretName: prometheus-k8s-nephtek-com-tls
+        hosts:
+          - prometheus.k8s.nephtek.com
+
+prometheus-node-exporter:
+  hostRootFsMount:
+    enabled: false
+
+kubeControllerManager:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+kubeProxy:
+  enabled: false

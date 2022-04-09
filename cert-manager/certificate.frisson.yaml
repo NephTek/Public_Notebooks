@@ -1,0 +1,42 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: frissoncomputing-com
+spec:
+  secretName: frissoncomputing-com-tls
+  dnsNames:
+  - "*.frissoncomputing.com"
+  - "frissoncomputing.com"
+  issuerRef:
+    name: frissoncomputing-com-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: frissoncomputing-net
+spec:
+  secretName: frissoncomputing-net-tls
+  dnsNames:
+  - "*.frissoncomputing.net"
+  - "frissoncomputing.net"
+  issuerRef:
+    name: frissoncomputing-net-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: frisson-tech
+spec:
+  secretName: frisson-tech-tls
+  dnsNames:
+  - "*.frisson.tech"
+  - "frisson.tech"
+  issuerRef:
+    name: frisson-tech-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
+---

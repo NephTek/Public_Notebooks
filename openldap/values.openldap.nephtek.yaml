@@ -28,3 +28,116 @@ perssistence:
 
 test:
   enabled: true
+
+adminPassword: "admin"
+configPassword: "config"
+
+customLdifFiles:
+  initial-ous.ldif: |-
+    # Entry 2: ou=groups,dc=nephtek,dc=com
+    dn: ou=groups,dc=nephtek,dc=com
+    objectclass: organizationalUnit
+    objectclass: top
+    ou: groups
+
+    # Entry 3: cn=aaronh,ou=groups,dc=nephtek,dc=com
+    dn: cn=aaronh,ou=groups,dc=nephtek,dc=com
+    cn: aaronh
+    gidnumber: 501
+    objectclass: posixGroup
+    objectclass: top
+
+    # Entry 4: cn=accounting,ou=groups,dc=nephtek,dc=com
+    dn: cn=accounting,ou=groups,dc=nephtek,dc=com
+    cn: accounting
+    gidnumber: 504
+    memberuid: laurab
+    objectclass: posixGroup
+    objectclass: top
+
+    # Entry 5: cn=administrator,ou=groups,dc=nephtek,dc=com
+    dn: cn=administrator,ou=groups,dc=nephtek,dc=com
+    cn: administrator
+    gidnumber: 503
+    memberuid: aaronh
+    objectclass: posixGroup
+    objectclass: top
+
+    # Entry 6: cn=dank,ou=groups,dc=nephtek,dc=com
+    dn: cn=dank,ou=groups,dc=nephtek,dc=com
+    cn: dank
+    gidnumber: 500
+    objectclass: posixGroup
+    objectclass: top
+
+    # Entry 7: cn=developer,ou=groups,dc=nephtek,dc=com
+    dn: cn=developer,ou=groups,dc=nephtek,dc=com
+    cn: developer
+    gidnumber: 502
+    memberuid: dank
+    objectclass: posixGroup
+    objectclass: top
+
+    # Entry 8: cn=laurab,ou=groups,dc=nephtek,dc=com
+    dn: cn=laurab,ou=groups,dc=nephtek,dc=com
+    cn: laurab
+    gidnumber: 505
+    objectclass: posixGroup
+    objectclass: top
+
+    # Entry 9: ou=people,dc=nephtek,dc=com
+    dn: ou=people,dc=nephtek,dc=com
+    objectclass: organizationalUnit
+    objectclass: top
+    ou: people
+
+    # Entry 10: cn=Aaron Hanson,ou=people,dc=nephtek,dc=com
+    dn: cn=Aaron Hanson,ou=people,dc=nephtek,dc=com
+    cn: Aaron Hanson
+    gidnumber: 501
+    givenname: Aaron
+    homedirectory: /home/users/aaronh
+    loginshell: /bin/bash
+    mail: aaron@nephtek.com
+    objectclass: inetOrgPerson
+    objectclass: posixAccount
+    objectclass: top
+    sn: Hanson
+    uid: aaronh
+    uidnumber: 501
+    userpassword: {CRYPT}$6$mhMVFqkg$BqPB.EtibTDuhQMWO7AtwCGO0B8EDgMkHDvxtOLJ7mn
+     UwR.2F/VYPo3PutBdB1lcVH3CBwcZd.rFS2eiojqZf.
+
+    # Entry 11: cn=Dan Kirkpatrick,ou=people,dc=nephtek,dc=com
+    dn: cn=Dan Kirkpatrick,ou=people,dc=nephtek,dc=com
+    cn: Dan Kirkpatrick
+    gidnumber: 500
+    givenname: Dan
+    homedirectory: /home/users/dank
+    loginshell: /bin/bash
+    mail: dan@nephtek.com
+    objectclass: inetOrgPerson
+    objectclass: posixAccount
+    objectclass: top
+    sn: Kirkpatrick
+    uid: dank
+    uidnumber: 500
+    userpassword: {CRYPT}$6$N1nI8Ny3$MTlL3nITnn45OtiZbkG8/GOn5zdG2U/wgWb/J4o69ou
+     6uPT1wPXlXV6m80xQokkR4THCFf.bOTPdeMX7PMnFp/
+
+    # Entry 12: cn=Laura Banfield,ou=people,dc=nephtek,dc=com
+    dn: cn=Laura Banfield,ou=people,dc=nephtek,dc=com
+    cn: Laura Banfield
+    gidnumber: 505
+    givenname: Laura
+    homedirectory: /home/users/laurab
+    loginshell: /bin/bash
+    mail: laura@nephtek.com
+    objectclass: inetOrgPerson
+    objectclass: posixAccount
+    objectclass: top
+    sn: Banfield
+    uid: laurab
+    uidnumber: 502
+    userpassword: {CRYPT}$6$2mz.qiBz$B1XlMnOknTp39eVzWaHjrFlhMaBwXfrCe8KJnkrhxUe
+     UsftHUDiSFqDoBK7if8btyWlzdm3T2B14iViIT9prI/

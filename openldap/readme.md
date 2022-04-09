@@ -1,7 +1,12 @@
-# https://github.com/jp-gouin/helm-openldap
+# https://charts.helm.sh/stable/
 
 ```shell
-helm repo add helm-openldap https://jp-gouin.github.io/helm-openldap/
+helm repo add stable https://charts.helm.sh/stable
+helm upgrade --install -n openldap --create-namespace openldap stable/openldap -f values.openldap.nephtek.yaml
 
-helm upgrade --install -n openldap --create-namespace openldap helm-openldap/openldap-stack-ha -f values.nephtek.yaml
+helm repo add cetic https://cetic.github.io/helm-charts
+helm upgrade --install -n openldap phpldapadmin cetic/phpldapadmin -f values.phpldapadmin.rancher-desktop.yaml
+
+kubectl apply -k kustomize/overlays/rancher-desktop/
+
 ```

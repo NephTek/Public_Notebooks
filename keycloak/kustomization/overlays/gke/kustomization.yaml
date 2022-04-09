@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../keycloak-operator/deploy/
+
+images:
+  - name: quay.io/keycloak/keycloak-operator
+    newTag: 17.0.0

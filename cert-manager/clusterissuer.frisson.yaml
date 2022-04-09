@@ -1,0 +1,63 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: frissoncomputing-com-issuer
+spec:
+  acme:
+    email: dan@frissoncomputing.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: frissoncomputing-com-key
+    solvers:
+    - dns01:
+        cloudDNS:
+          project: production-267817
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: key.json
+      selector:
+        dnsZones:
+        - frissoncomputing.com
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: frissoncomputing-net-issuer
+spec:
+  acme:
+    email: dan@frissoncomputing.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: frissoncomputing-net-key
+    solvers:
+    - dns01:
+        cloudDNS:
+          project: production-267817
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: key.json
+      selector:
+        dnsZones:
+        - frissoncomputing.net
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: frisson-tech-issuer
+spec:
+  acme:
+    email: dan@frissoncomputing.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: frisson-tech-key
+    solvers:
+    - dns01:
+        cloudDNS:
+          project: production-267817
+          serviceAccountSecretRef:
+            name: clouddns-dns01-solver-svc-acct
+            key: key.json
+      selector:
+        dnsZones:
+        - frisson.tech
+

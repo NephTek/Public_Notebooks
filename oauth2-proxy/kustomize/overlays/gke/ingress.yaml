@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
+    nginx.ingress.kubernetes.io/rewrite-target: /oauth2$1
+  name: prometheus-oauth2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: prometheus.nephtek.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: oauth2-proxy
+                port:
+                  number: 80
+            path: /oauth2(.*)
+            pathType: ImplementationSpecific
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
+    nginx.ingress.kubernetes.io/rewrite-target: /oauth2$1
+  name: alertmanager-oauth2
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: alertmanager.nephtek.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: oauth2-proxy
+                port:
+                  number: 80
+            path: /oauth2(.*)
+            pathType: ImplementationSpecific
