@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: phpldapadmin
+  labels:
+    app: phpldapadmin
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
+spec:
+  tls:
+    - hosts:
+        - phpldapadmin.nephtek.com
+      secretName: phpldapadmin-nephtek-com-cert
+  rules:
+    - host: phpldapadmin.nephtek.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: phpldapadmin
+                port:
+                  name: http
