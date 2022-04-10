@@ -1,5 +1,5 @@
 ```shell
-helm repo add loki https://grafana.github.io/loki/charts
+helm repo add grafana https://grafana.github.io/helm-charts
 
 helm repo update
 
