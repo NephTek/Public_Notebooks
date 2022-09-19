@@ -7,6 +7,8 @@ metadata:
     app: keycloak
 spec:
   instances: 1
+  extensions:
+    - https://keycloak-themes.k8s.nephtek.com/theme.jar
   externalAccess:
     enabled: False
     host: keycloak.k8s.nephtek.com

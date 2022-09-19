@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: nephtek-com-issuer
+  name: keycloak-themes
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: keycloak-themes.k8s.nephtek.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: keycloak-themes
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - keycloak-themes.k8s.nephtek.com
+      secretName: keycloak-themes-k8s-nephtek-cert

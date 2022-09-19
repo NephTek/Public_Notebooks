@@ -1,5 +1,6 @@
 alertmanager:
   ingress:
+    ingressClassName: nginx
     annotations:
       cert-manager.io/cluster-issuer: nephtek-com-issuer
       nginx.ingress.kubernetes.io/auth-response-headers: x-auth-request-user, x-auth-request-email, x-auth-request-access-token
@@ -14,6 +15,7 @@ alertmanager:
 
 grafana:
   ingress:
+    ingressClassName: nginx
     annotations:
       cert-manager.io/cluster-issuer: nephtek-com-issuer
     hosts:
@@ -39,6 +41,7 @@ grafana:
 
 prometheus:
   ingress:
+    ingressClassName: nginx
     annotations:
       cert-manager.io/cluster-issuer: nephtek-com-issuer
       nginx.ingress.kubernetes.io/auth-response-headers: x-auth-request-user, x-auth-request-email, x-auth-request-access-token

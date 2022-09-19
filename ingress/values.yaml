@@ -9,7 +9,7 @@ controller:
       cpu: 10m
       memory: 200Mi
 
-  hostNetwork: true
+  #hostNetwork: true
   kind: DaemonSet
   config:
     keep-alive: "360"

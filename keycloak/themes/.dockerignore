@@ -1,0 +1,4 @@
+kustomize
+unused
+Dockerfile
+.dockerignore
