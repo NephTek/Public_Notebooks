@@ -2,3 +2,25 @@ serviceMonitor:
   enabled: true
   additionalLabels:
     release: kps
+
+#loki:
+#  commonConfig:
+#    replication_factor: 1
+#  storage:
+#    type: 'filesystem'
+
+#read:
+#  affinity: []
+
+#write:
+#  affinity: []
+
+loki:
+  config:
+    ruler:
+      storage:
+  commonConfig:
+    replication_factor: 1
+  storage:
+    type: 'filesystem'
+  auth_enabled: false

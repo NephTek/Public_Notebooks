@@ -12,7 +12,8 @@ kernel for your platform (bash for WSL, Linux, and MacOS; Powershell
 for Windows).  At this time, the PowerShell scripts are not complete.
 Check back for updates.
 
-1. Install Kubernetes
+1. [Notebook - Learning Jupyter](./getting-started/learning_jupyter.ipynb)
+2. Install Kubernetes
     - Desktop
       - [Rancher Desktop](https://rancherdesktop.io) - fully free, allows selection of k8s version
       - [Docker Desktop](https://www.docker.com/products/docker-desktop/) - requires license fee for large organizations
@@ -31,13 +32,11 @@ Check back for updates.
       - [EKS](https://aws.amazon.com/eks/)
       - [DigitalOcean](https://www.digitalocean.com/products/kubernetes)
       - many others
-2. [Install Jupyter](https://jupyter.org/install)
-3. [Notebook - Learning Jupyter](./getting-started/learning_jupyter.ipynb)
-4. Install Jupyter kernel for your platform
+3. Install Jupyter kernel for your platform
     - [Notebook - MacOS: bash kernel](./getting-started/mac/install_jupyter_bash_kernel.ipynb)
     - [Notebook - Linux/WSL: bash kernel](./getting-started/linux/install_jupyter_bash_kernel.ipynb)
     - Windows: PowerShell kernel: coming soon!
-5. [Notebook - Install Kubernetes](./kubernetes/install_k8s_cluster.ipynb)
+4. [Notebook - Install Kubernetes](./kubernetes/install_k8s_cluster.ipynb)
 5. Setup DNS for your platform
     - Mac: [Notebook - Install DNSmasq](./dnsmasq/mac/install_dnsmasq.ipynb)
     - Linux: Install DNSmasq... coming soon!

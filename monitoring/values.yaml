@@ -7,7 +7,7 @@ grafana:
     enabled: true
   additionalDataSources:
     - name: Loki
-      url: http://loki.logging:3100
+      url: http://loki.gateway.svc.cluster.local
       type: loki
 
 prometheus:
